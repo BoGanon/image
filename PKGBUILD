@@ -15,8 +15,6 @@ makedepends=('cross-ps2-binutils>=2.14'
              'cross-ps2-iop-gcc'
              'make' 'gcc' 'patch' 'subversion')
 options=('!strip' '!libtool')
-source=("image.tar.gz")
-md5sums=('b700873bb4334cb88f5e279d587393c3')
 
 _gitroot=http://github.com/ragnarok2040/libimage.git
 _gitname=libimage
