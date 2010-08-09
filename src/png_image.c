@@ -162,7 +162,7 @@ void image_get_png_texture(png_structp png_ptr, png_infop info_ptr, image_t *ima
 
 }
 
-image_t *image_convert_png(unsigned char *buf)
+image_t *image_create_from_png(unsigned char *buf)
 {
 	image_t *image;
 	png_infop info_ptr;
