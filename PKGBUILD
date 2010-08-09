@@ -25,6 +25,17 @@ build() {
 
   cd $srcdir
 
+  if [ -d "${srcdir}/${_gitname}" ]; then
+    msg "Found existing copy..."
+    msg "Updating..."
+    cd ${_gitname}
+    git pull --rebase
+    cd $srcdir
+  else
+    msg "Checking out fresh copy..."
+    git clone ${_gitroot}
+  fi
+
   msg "Cleaning up sources..."
   rm -rf image-build || return 1
 
