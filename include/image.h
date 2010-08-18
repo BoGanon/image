@@ -16,8 +16,8 @@ typedef struct {
 } palette_t;
 
 typedef struct {
-	texture_t *texture;
-	palette_t *palette;
+	texture_t texture;
+	palette_t palette;
 } image_t;
 
 // Array to swizzle palette entries for the GS

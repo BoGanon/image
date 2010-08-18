@@ -24,21 +24,12 @@ image_t *image_init(void)
 {
 
 	image_t *image = (image_t*)malloc(sizeof(image_t));
-	texture_t *texture = (texture_t*)malloc(sizeof(texture_t));
-	palette_t *palette = (palette_t*)malloc(sizeof(palette_t));
 
 	if (image != NULL)
 	{
-		if ((texture != NULL) && (palette != NULL))
-		{
-			image->texture = texture;
-			image->palette = palette;
-
-			image->texture->data = NULL;
-			image->palette->data = NULL;
-
-			return image;
-		}
+		image->texture.data = NULL;
+		image->palette.data = NULL;
+		return image;
 	}
 
 	return NULL;
@@ -48,24 +39,17 @@ void image_free(image_t *image)
 {
 	if (image != NULL)
 	{
-		if (image->palette != NULL)
+		if (image->palette.data != NULL)
 		{
-			if (image->palette->data != NULL)
-			{
-				free(image->palette->data);
-			}
 
-			free(image->palette);
+			free(image->palette.data);
+
 		}
 
-		if (image->texture != NULL)
-		{
-			if (image->texture->data != NULL)
-			{
-				free(image->texture->data);
-			}
 
-			free(image->texture);
+		if (image->texture.data != NULL)
+		{
+			free(image->texture.data);
 		}
 
 		free(image);
