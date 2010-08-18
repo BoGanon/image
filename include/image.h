@@ -32,8 +32,8 @@ extern "C" {
 	image_t *image_init();
 	void     image_free(image_t *image);
 
-	image_t *image_create_from_png(unsigned char *pngbuf);
-
+	image_t *image_load_png_buffer(unsigned char *pngbuf);
+	image_t *image_load_png_file(char *path);
 #ifdef __cplusplus
 };
 #endif

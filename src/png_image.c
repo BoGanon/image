@@ -162,7 +162,7 @@ void image_get_png_texture(png_structp png_ptr, png_infop info_ptr, image_t *ima
 
 }
 
-image_t *image_create_from_png(unsigned char *buf)
+image_t *image_load_png_buffer(unsigned char *buf)
 {
 	image_t *image;
 	png_infop info_ptr;
@@ -314,6 +314,52 @@ image_t *image_create_from_png(unsigned char *buf)
 	image_get_png_texture(png_ptr,info_ptr,image);
 
 	png_destroy_read_struct(&png_ptr,&info_ptr,NULL);
+
+	return image;
+
+}
+
+image_t *image_load_png_file(char *path)
+{
+
+	FILE *file;
+	char *png;
+	image_t *image;
+	size_t size;
+
+	file = fopen(path,"r");
+
+	if (file == NULL)
+	{
+		return NULL;
+	}
+
+	fseek(file,0,SEEK_END);
+
+	size = ftell(file);
+
+	png = (char*)malloc(size);
+
+	if (png == NULL)
+	{
+		fclose(file);
+		return NULL;
+	}
+
+	fseek(file,0,SEEK_SET);
+
+	if (fread(png,size,1,file) < size)
+	{
+		fclose(file);
+		free(png);
+		return NULL;
+	}
+
+	fclose(file);
+
+	image = image_load_png_buffer(png);
+
+	free(png);
 
 	return image;
 
