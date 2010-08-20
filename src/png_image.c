@@ -348,7 +348,7 @@ image_t *image_load_png_file(char *path)
 
 	fseek(file,0,SEEK_SET);
 
-	if (fread(png,size,1,file) < size)
+	if (fread(png,1,size,file) < size)
 	{
 		fclose(file);
 		free(png);
