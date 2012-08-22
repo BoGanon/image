@@ -16,8 +16,8 @@ makedepends=('cross-ps2-binutils>=2.14'
              'make' 'gcc' 'patch' 'subversion')
 options=('!strip' '!libtool')
 
-_gitroot=http://github.com/ragnarok2040/libimage.git
-_gitname=libimage
+_gitroot=http://github.com/ragnarok2040/image.git
+_gitname=image
 
 build() {
   # Setup PKGBUILD ps2dev environment
